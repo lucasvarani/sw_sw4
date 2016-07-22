@@ -1,0 +1,13 @@
+one:
+  name: MyString
+  email: MyString
+  phone: MyString
+  message: MyText
+  published: false
+
+two:
+  name: MyString
+  email: MyString
+  phone: MyString
+  message: MyText
+  published: false

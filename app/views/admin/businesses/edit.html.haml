@@ -1,0 +1,27 @@
+%section.content-header
+  %h1
+    Destaques
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "#"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Dados Empresa
+
+
+/ Main content
+%section.content
+  .row
+    / left column
+    .col-md-12
+      / general form elements
+      .box.box-primary
+        .box-header
+          %h3.box-title Editar Dados Empresa
+        / /.box-header
+        / form start
+        = render 'form'
+
+      %p
+        = link_to t("show"), [:admin, @business], :class => "btn btn-default" 

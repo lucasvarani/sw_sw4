@@ -1,0 +1,42 @@
+%section.content-header
+  %h1
+    Destaques  
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "#"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Destaques
+     
+
+/ Main content
+%section.content
+  .row
+    / left column
+    .col-md-12
+      / general form elements
+      .box.box-primary
+        .box-header
+          %h3.box-title="#{@highlight.title}"
+        
+        .box-body  
+          %p= "#{t("activerecord.attributes.highlight.subtitle")}: #{@highlight.subtitle}"   
+        .box-body  
+          %p= "#{t("activerecord.attributes.highlight.publication_start")}: #{@highlight.publication_start}"   
+        .box-body  
+          %p= "#{t("activerecord.attributes.highlight.publication_stop")}: #{@highlight.publication_stop}" 
+        .box-body  
+          %p= "#{t("activerecord.attributes.highlight.order")}: #{@highlight.order}"   
+        .box-body  
+          %p= "#{t("activerecord.attributes.highlight.published")}: #{show_boolean(@highlight.published)}"
+        - if @highlight.image_highlight.file?
+          .box-body
+            %p=image_tag(@highlight.image_highlight.url)
+
+        .box-body  
+          %p= "#{t("activerecord.attributes.highlight.link")}: #{@highlight.link}"
+
+  = link_to t("back_list"), admin_highlights_path, :class => "btn btn-default"
+  = link_to t("edit"), edit_admin_highlight_path(@highlight), :class => "btn btn-default" 
+  = link_to "Novo Destaque", new_admin_highlight_path, :class => "btn btn-primary"

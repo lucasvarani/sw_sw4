@@ -1,0 +1,15 @@
+one:
+  description: MyText
+  quote: MyText
+  mission: MyText
+  view: MyText
+  values: MyText
+  published: false
+
+two:
+  description: MyText
+  quote: MyText
+  mission: MyText
+  view: MyText
+  values: MyText
+  published: false

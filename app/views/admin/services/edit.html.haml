@@ -1,0 +1,29 @@
+%section.content-header
+  %h1
+    Serviços
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "#"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Serviços
+
+
+/ Main content
+%section.content
+  .row
+    / left column
+    .col-md-12
+      / general form elements
+      .box.box-primary
+        .box-header
+          %h3.box-title
+            =@service.title
+        / /.box-header
+        / form start
+        = render 'form'
+      
+
+      %p
+        = link_to t("back_list"), admin_services_path, :class => "btn btn-default"

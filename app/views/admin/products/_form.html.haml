@@ -1,0 +1,29 @@
+= form_for [:admin, @portifolio] do |f|
+  -if f.error_messages
+    .alert.alert-danger.alert-dismissable
+      %i.fa.fa-ban
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+      %b Alert!
+      Confira os campos marcados em vermelho.
+  .box-body
+    .form-group
+      = f.label :title
+      = f.text_field :title, :class => "form-control", :placeholder => t("activerecord.attributes.portifolio.title")  
+    .form-group 
+      = f.label :description
+      = f.text_area :description, :class => "form-control", :placeholder => t("activerecord.attributes.portifolio.description")  
+    .form-group 
+      = f.label :published
+      = f.check_box :published, :class => "form-control", :placeholder => t("activerecord.attributes.portifolio.active")     
+    .form-group 
+      = f.label :brand
+      = f.text_field :brand, :class => "form-control", :placeholder => t("activerecord.attributes.portifolio.brand")  
+    .form-group 
+      = f.label :style
+      = f.text_field :style, :class => "form-control", :placeholder => t("activerecord.attributes.portifolio.style")  
+    .form-group 
+      = f.label :code
+      = f.text_field :code, :class => "form-control", :placeholder => t("activerecord.attributes.portifolio.code")  
+  .box-footer
+    =f.submit nil, :class => "btn btn-primary" 
+

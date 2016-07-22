@@ -1,0 +1,48 @@
+%section.content-header
+  %h1
+    Sobre  
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Sobre
+/ Main content
+%section.content
+  .col-xs-12
+    %p
+      / = link_to "Novo Artigo", new_admin_about_path, :class => "btn btn-primary" 
+      / = link_to "Ver Todos", admin_abouts_path, :class => "btn btn-primary"  if !params[:tag].blank?
+    
+    .box
+      .box-header
+        %h3.box-title 
+          Sobre
+          = " - Com Tag '#{params[:tag]}'" if !params[:tag].blank? 
+          
+      .box-body.table-responsive.no-padding#tag_cloud
+
+        /- tag_cloud about.tag_counts, %w[s m l] do |tag, css_class| 
+        /  = link_to tag.name, admin_tag_path(tag.name), :class => css_class
+        / - tag_cloud About.tag_counts, %w[s m l] do |tag, css_class|
+        /  = link_to(tag.name, admin_tag_path(tag.name), :class => css_class)
+      .box-body.table-responsive.no-padding
+        %table.table.table-hover
+          %tr
+            %th=t("activerecord.attributes.about.title") 
+            %th=t("activerecord.attributes.about.description")
+            
+            %th=t("actions")
+          - for about in @abouts 
+            %tr
+              %td= about.title 
+              %td=raw (about.description)
+                              
+              %td 
+                / = link_to t("show"), [:admin, about], :class => "btn btn-default"
+                = link_to t("edit"), edit_admin_about_path(about), :class => "btn btn-default"
+                / = link_to t("destroy"), [:admin, about], :confirm => t("msg_delete"), :method => :delete, :class => "btn btn-default"
+
+    %p
+      

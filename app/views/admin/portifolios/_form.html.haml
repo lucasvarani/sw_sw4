@@ -1,0 +1,32 @@
+= form_for [:admin, @portifolio] do |f|
+  -if f.error_messages
+    .alert.alert-danger.alert-dismissable
+      %i.fa.fa-ban
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+      %b Alert!
+      Confira os campos marcados em vermelho. 
+  .box-body
+    .form-group
+      = f.label :title
+      = f.text_field :title, :class => "form-control", :placeholder => t("activerecord.attributes.product_image.title")
+    .form-group 
+      = f.label :description
+      = f.text_area :description, :class => "form-control tinymce"    
+    .form-group 
+      = f.label :ordem
+      = f.number_field :ordem
+    .form-group 
+      = f.label :published
+      = f.check_box :published    
+    .form-group
+      = f.label :image_portifolio
+      = f.file_field :image_portifolio, :class => "form-control" 
+  - if @portifolio.image_portifolio.file?
+    .form-group
+      =image_tag(@portifolio.image_portifolio.url(:medium))
+                                                  
+  .box-footer
+    =f.submit nil, :class => "btn btn-primary" 
+
+-content_for :footer do
+  = tinymce  

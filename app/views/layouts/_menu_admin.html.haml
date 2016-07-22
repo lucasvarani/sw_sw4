@@ -1,0 +1,63 @@
+/ sidebar: style can be found in sidebar.less
+%section.sidebar
+  / Sidebar user panel
+  .user-panel
+    .pull-left.image
+      =image_tag("admin_img/avatar3.png", :class => "img-circle")
+    .pull-left.info
+      %p 
+        =t("greeting") + current_user.name 
+      =link_to("Sair", logout_path(), :class=>"glyphicon glyphicon-off") 
+  / search form
+  %form.sidebar-form{:action => "#", :method => "get"}
+    .input-group
+      %input.form-control{:name => "q", :placeholder => "Search...", :type => "text"}/
+      %span.input-group-btn
+        %button#search-btn.btn.btn-flat{:name => "seach", :type => "submit"}
+          %i.fa.fa-search
+  / /.search form
+  / sidebar menu: : style can be found in sidebar.less
+  %ul.sidebar-menu
+    %li
+      %a{:href => "#{admin_abouts_path()}"}  
+        %i.fa.fa-group
+        %span Sobre
+    %li
+      %a{:href => "#{admin_portifolios_path()}"} 
+        %i.fa.fa-group 
+        %span Portifólios  
+    %li
+      %a{:href => "#{admin_contacts_path()}"} 
+        %i.fa.fa-group 
+        %span Contatos                  
+    / %li
+    /   %a{:href => "#{admin_highlights_path()}"}
+    /     %i.fa.fa-group 
+    /     %span Destaques
+    / %li
+    /   %a{:href => "#{admin_teams_path()}"} 
+    /     %i.fa.fa-group 
+    /     %span Equipe
+    / %li
+    /   %a{:href => "#{admin_products_path()}"} 
+    /     %i.fa.fa-group 
+    /     %span Produtos       
+                       
+    / %li
+    /   %a{:href => "#{admin_customers_path()}"} 
+    /     %i.fa.fa-group 
+    /     %span Projetos
+    / %li
+    /   %a{:href => "#{admin_services_path()}"} 
+    /     %i.fa.fa-group 
+    /     %span Especialidades
+
+    %li
+      %a{:href => "#{users_path()}"} 
+        %i.fa.fa-group 
+        %span Usuários  
+        
+        
+        
+        
+/ /.sidebar

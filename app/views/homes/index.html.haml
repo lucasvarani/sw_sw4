@@ -1,0 +1,42 @@
+/ Header
+%section#header
+	%header
+		%h1 SW4 Comunicação
+		%p projetos de comunicação
+	%footer
+		%a.button.style2.scrolly-middle{:href => "#banner"} Vai Filhão!
+/ Banner
+%section#banner
+	- for about in @abouts 
+		%header
+			%h2 
+				= about.title
+		%p
+			= raw(about.description)
+	%footer
+		%a.button.style2.scrolly{:href => "#first"} Portifólio
+- counter = 0
+- @portifolios.each do |pt|
+	-counter = counter % 2
+	-if counter == 0
+		%article#first.container.box.style1.right
+			%a.image.fit{:href => "portifolios/#{pt.id}"}
+				%img{:alt => "", :src => "#{pt.image_portifolio.url}", :style => "width: 100%"}/
+			.inner
+				%header
+					%h2 
+						=raw (pt.title)
+				%p 
+					=raw (pt.description)
+				
+	- else
+		%article.container.box.style1.left
+			%a.image.fit{:href => "portifolios/#{pt.id}"}
+				%img{:alt => "", :src => "#{pt.image_portifolio.url}", :style => "width: 100%"}/
+			.inner
+				%header
+					%h2 
+						=raw (pt.title)
+				%p 
+					=raw (pt.description)
+	-counter = counter + 1

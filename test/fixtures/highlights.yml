@@ -1,0 +1,17 @@
+one:
+  title: MyString
+  subtitle: MyString
+  publication_statart: 2014-04-23 15:51:27
+  publication_stop: 2014-04-23 15:51:27
+  order: 1
+  activated: false
+  published: false
+
+two:
+  title: MyString
+  subtitle: MyString
+  publication_statart: 2014-04-23 15:51:27
+  publication_stop: 2014-04-23 15:51:27
+  order: 1
+  activated: false
+  published: false

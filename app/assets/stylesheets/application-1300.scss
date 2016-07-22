@@ -1,0 +1,27 @@
+section.highlight{
+  p.text-highlight
+	{
+		margin-top: 85px;
+		font-size:38px;
+		background-color:red;
+
+	}
+	p.text-highlight.subtitle
+	{
+		margin-top: 15px;
+		font-size:18px;
+	}
+}
+
+section.highlight-thumb{
+  .show_thumb_box{
+		height: 205px;
+		width:193px;
+		padding: 45px 15px 0px 15px !important;
+		p{
+			height:80px;
+			width:163px;
+		}
+	}
+
+}

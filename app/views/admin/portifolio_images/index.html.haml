@@ -1,0 +1,46 @@
+%section.content-header
+  %h1
+    Imagens do Portifólio -
+    = "#{@portifolio.title}" 
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li
+      %a{:href => "#{admin_portifolios_path()}"}
+        %i.fa.fa-dashboard
+        Portifólios 
+    %li.active Imagens do Portifólio
+/ Main content
+%section.content
+  .col-xs-12
+    %p= link_to "Nova Imagem do Portifólio", new_admin_portifolio_portifolio_image_path(@portifolio), :class => "btn btn-primary"
+    
+    .box
+      .box-header
+        %h3.box-title Imagens Cadastrados do Portifólio 
+      .box-body.table-responsive.no-padding
+        %table.table.table-hover
+          %tr
+            %th=t("activerecord.attributes.product_image.image_product")
+            %th=t("activerecord.attributes.product_image.title")
+            %th=t("activerecord.attributes.product_image.order")
+            %th=t("activerecord.attributes.product_image.published")
+            %th=t("actions")
+          - for portifolio_image in @portifolio_images 
+            %tr
+              %td=image_tag(portifolio_image.image_portifolio.url(:thumb))   
+              %td= portifolio_image.title
+              %td= portifolio_image.ordem 
+              %td= show_boolean(portifolio_image.published)                
+              %td 
+                = link_to t("show"), admin_portifolio_portifolio_image_path(@portifolio,portifolio_image), :class => "btn btn-default"
+                = link_to t("edit"), edit_admin_portifolio_portifolio_image_path(@portifolio, portifolio_image), :class => "btn btn-default"
+                = link_to t("destroy"), admin_portifolio_portifolio_image_path(@portifolio,portifolio_image), :confirm => t("msg_delete"), :method => :delete, :class => "btn btn-danger" 
+
+    %p= link_to "Nova Imagem do Portifólio", new_admin_portifolio_portifolio_image_path(@portifolio), :class => "btn btn-primary"
+
+
+

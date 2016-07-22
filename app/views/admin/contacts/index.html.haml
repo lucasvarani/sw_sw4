@@ -1,0 +1,34 @@
+%section.content-header
+  %h1
+    Contatos  
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Contatos
+/ Main content
+%section.content
+  .col-xs-12
+    .box
+      .box-header
+        %h3.box-title Contatos Efetuados
+      .box-body.table-responsive.no-padding
+        %table.table.table-hover
+          %tr
+            %th=t("activerecord.attributes.contact.id")          
+            %th=t("activerecord.attributes.contact.name")
+            %th=t("activerecord.attributes.contact.email")
+            %th=t("activerecord.attributes.contact.phone")
+            %th=t("actions")
+          - for contact in @contacts
+            %tr
+              %td= contact.id 
+              %td= contact.name
+              %td= contact.email
+              %td= contact.phone
+              %td 
+                = link_to t("show"), [:admin, contact], :class => "btn btn-default"
+                = link_to t("destroy"), [:admin, contact], :confirm => t("msg_delete"), :method => :delete, :class => "btn btn-default"
+

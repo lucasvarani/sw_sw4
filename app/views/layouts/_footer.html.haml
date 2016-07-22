@@ -1,0 +1,32 @@
+/ Contact
+%article.container.box.style3
+  %header
+    %h2 Contate-nos!
+    %p Diam dignissim lectus eu ornare volutpat orci.
+  %form{:action => "#", :method => "post"}
+    .row{:class => "50%"}
+      .6u{:class => "12u$(mobile)"}
+        %input.text{:name => "name", :placeholder => "nome", :type => "text"}/
+      %div{:class => "6u$ 12u$(mobile)"}
+        %input.text{:name => "email", :placeholder => "E-mail", :type => "text"}/
+      %div{:class => "12u$"}
+        %textarea{:name => "message", :placeholder => "Mensagem"}
+      %div{:class => "12u$"}
+        %ul.actions
+          %li
+            %input{:type => "submit", :value => "Enviar"}/
+%section#footer
+  %ul.icons
+    / <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+    %li
+      %a.icon.fa-facebook{:href => "#"}
+        %span.label Facebook
+    / <li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+    / <li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
+    %li
+      %a.icon.fa-instagram{:href => "#"}
+        %span.label Instagram
+    / <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+  .copyright
+    %ul.menu
+      %li &copy; SW4. All rights reserved.

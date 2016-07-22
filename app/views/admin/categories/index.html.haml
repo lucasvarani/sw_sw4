@@ -1,0 +1,39 @@
+%section.content-header
+  %h1
+    Categorias  
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Categorias
+/ Main content
+%section.content
+  .col-xs-12
+    %p
+      = link_to "Nova Categoria", new_admin_category_path, :class => "btn btn-primary" 
+    .box
+      .box-header
+        %h3.box-title 
+          Categorias Cadastradas
+      .box-body.table-responsive.no-padding
+        %table.table.table-hover
+          %tr
+            %th=t("activerecord.attributes.category.image_category")
+            %th=t("activerecord.attributes.category.title") 
+            %th=t("activerecord.attributes.category.published")
+            %th=t("actions")
+          - for category in @categories 
+            %tr
+              %td= image_tag(category.image_category) if category.image_category.file?
+              %td= category.title 
+              %td= show_boolean(category.published)                
+              %td 
+                = link_to t("show"), [:admin, category], :class => "btn btn-default"
+                = link_to t("edit"), edit_admin_category_path(category), :class => "btn btn-default"
+                = link_to t("destroy"), [:admin, category], :confirm => t("msg_delete"), :method => :delete, :class => "btn btn-danger"
+                = link_to "Subcategoria de #{category.title}", admin_category_subcategories_path(category), :class => "btn btn-success"
+
+    %p
+      = link_to "Nova Categoria", new_admin_category_path, :class => "btn btn-primary"

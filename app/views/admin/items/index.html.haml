@@ -1,0 +1,40 @@
+%section.content-header
+  %h1
+    Itens  
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li
+      %a{:href => admin_categories_path()}
+        %i.fa.fa-dashboard
+        Categorias        
+    %li.active Itens
+/ Main content
+%section.content
+  .col-xs-12
+    %p
+      = link_to "Novo Item", new_admin_category_item_path(@category), :class => "btn btn-primary" 
+    .box
+      .box-header
+        %h3.box-title 
+          Itens Cadastrados
+      .box-body.table-responsive.no-padding
+        %table.table.table-hover
+          %tr
+            %th=t("activerecord.attributes.item.title") 
+            %th=t("activerecord.attributes.item.published")
+            %th=t("actions")
+          - for item in @items
+            %tr
+              %td= item.title 
+              %td= show_boolean(item.published)                
+              %td 
+                = link_to t("show"), admin_category_item_path(@category,item), :class => "btn btn-default"
+                = link_to t("edit"), edit_admin_category_item_path(@category,item), :class => "btn btn-default"
+                = link_to t("destroy"), admin_category_item_path(@category,item), :confirm => t("msg_delete"), :method => :delete, :class => "btn btn-default"
+
+    %p
+      = link_to "Novo Item", new_admin_category_item_path(@category), :class => "btn btn-primary"

@@ -1,0 +1,35 @@
+.container-fluid
+  .row.header-contato
+    .col-md-5
+    %h1.col-md-3 Contato
+    .col-md-4
+%section.container.contato
+  .row
+    .col-md-4.dados-contato
+      %h2 Contato
+      %p
+        Rua Adolfo Andre, 299 - Centro Atibaia-SP
+      %p
+        11 4412-0655
+      %p
+        contato@croiodontologia.com.br
+      %iframe{:allowfullscreen => "", :frameborder => "0", :height => "300", :src => "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3669.5561232201976!2d-46.5597327855031!3d-23.113339351083614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cec12649f97409%3A0x45b8da73888d6a13!2sR.+Adolfo+Andr%C3%A9%2C+299+-+Estancia+Parque+de+Atibaia%2C+Atibaia+-+SP%2C+12954-077!5e0!3m2!1spt-BR!2sbr!4v1461031484718", :style => "border:0", :width => "400"}
+    .col-md-1
+    .col-md-7.form-contato
+      = form_for (@contact, :html =>{:role => "form"}) do |f|
+        = f.label :name
+        %br
+        = f.text_field :name, :id => "nome", :class => "form-control input-contato", :placeholder => "Nome", :type => "text",  :required=> "Nome deve ser preenchido"
+        %br
+        = f.label :email
+        %br
+        = f.text_field :email, :class => "form-control input-contato", :id => "email", :placeholder => "E-mail", :required => "Email deve ser preenchido", :type => "email"
+        %br
+        = f.label :message
+        %br
+        = f.text_area :message, :class => "form-control", :id => "mensagem", :placeholder => "Mensagem", :required => "Mensagem deve ser preenchida", :type => "text"
+        %br
+        %input.btn-contato{:src => "/assets/btn-contato.png", :type => "image"}
+
+.container-fluid
+  .row.divisao

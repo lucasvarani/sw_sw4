@@ -1,0 +1,31 @@
+= form_for [:admin, @service] do |f|
+  -if f.error_messages
+    .alert.alert-danger.alert-dismissable
+      %i.fa.fa-ban
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+      %b Alert!
+      Confira os campos marcados em vermelho.
+  .box-body
+    .form-group  
+      = f.label :title
+      = f.text_field :title, :class => "form-control", :placeholder => t("activerecord.attributes.service.title")
+    .form-group  
+      = f.label :description
+      = f.text_area :description, :class => "form-control tinymce", :placeholder => t("activerecord.attributes.service.description")
+    .form-group
+      = f.label :published
+      = f.check_box :published     
+
+    .form-group
+      = f.label "Icone"
+      = f.file_field :image_service, :class => "form-control"  
+    - if @service.image_service.file?
+      .form-group
+        =image_tag(@service.image_service.url)
+      
+      
+  .box-footer
+    =f.submit nil, :class => "btn btn-primary"
+
+-content_for(:footer) do
+  = tinymce

@@ -1,0 +1,36 @@
+%section.content-header
+  %h1
+    Serviços  
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Serviços
+/ Main content
+%section.content
+  .col-xs-12
+    %p= link_to "Novo Serviço", new_admin_service_path, :class => "btn btn-primary"
+    
+    .box
+      .box-header
+        %h3.box-title Serviços Cadastrados
+      .box-body.table-responsive.no-padding
+        %table.table.table-hover
+          %tr
+            %th.text-center=t("activerecord.attributes.service.image_service")
+            %th=t("activerecord.attributes.service.title")
+            %th=t("activerecord.attributes.service.published") 
+            %th=t("actions")
+          - for service in @services 
+            %tr
+              %td.text-center= image_tag(service.image_service.url('thumb')) if service.image_service.file?
+              %td= service.title
+              %td= show_boolean(service.published)                
+              %td 
+                /= link_to t("show"), [:admin, service], :class => "btn btn-default"
+                = link_to t("edit"), edit_admin_service_path(service), :class => "btn btn-default"
+                = link_to t("destroy"), [:admin, service], :confirm => t("msg_delete"), :method => :delete, :class => "btn btn-default"
+
+    %p= link_to "Novo Serviço", new_admin_service_path, :class => "btn btn-primary"

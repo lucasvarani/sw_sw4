@@ -1,0 +1,40 @@
+%section.content-header
+  %h1
+    Destaques  
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Destaques
+/ Main content
+%section.content
+  .col-xs-12
+    %p= link_to "Novo Destaque", new_admin_highlight_path, :class => "btn btn-primary"
+    
+    .box
+      .box-header
+        %h3.box-title Destaques Cadastrados
+      .box-body.table-responsive.no-padding
+        %table.table.table-hover
+          %tr
+            %th=t("activerecord.attributes.highlight.id")
+            %th=t("activerecord.attributes.highlight.title")
+            %th=t("activerecord.attributes.highlight.publication_start")
+            %th=t("activerecord.attributes.highlight.publication_stop")
+            %th=t("activerecord.attributes.highlight.published") 
+            %th=t("actions")
+          - for highlight in @highlights 
+            %tr
+              %td= highlight.id
+              %td= highlight.title
+              %td= highlight.publication_start
+              %td= highlight.publication_stop
+              %td= show_boolean(highlight.published)                
+              %td 
+                = link_to t("show"), [:admin, highlight], :class => "btn btn-default"
+                = link_to t("edit"), edit_admin_highlight_path(highlight), :class => "btn btn-default"
+                = link_to t("destroy"), [:admin, highlight], :confirm => t("msg_delete"), :method => :delete, :class => "btn btn-default"
+
+    %p= link_to "Novo Destaque", new_admin_highlight_path, :class => "btn btn-primary"

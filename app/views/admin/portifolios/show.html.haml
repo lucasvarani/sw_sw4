@@ -1,0 +1,39 @@
+%section.content-header
+  %h1
+    Portifólio -
+    = "#{@portifolio.title}"
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "#"}
+        %i.fa.fa-dashboard
+        Home
+    %li
+      %a{:href => "#{admin_portifolios_path()}"}
+        %i.fa.fa-dashboard
+        Portifólios  
+    %li.active Portifólio
+     
+
+/ Main content
+%section.content
+  .row
+    / left column
+    .col-md-12
+      / general form elements
+      .box.box-primary
+        .box-header
+          %h3.box-title="#{@portifolio.title}" 
+        .box-body  
+          %p="#{t("activerecord.attributes.product_image.order")}: #{@portifolio.ordem}"          
+        .box-body  
+          %p="#{t("activerecord.attributes.product_image.published")}: #{show_boolean(@portifolio.published)}"      
+        - if @portifolio.image_portifolio.file?   
+          .box-body
+            %p=image_tag(@portifolio.image_portifolio.url(:medium)) 
+
+
+  = link_to t("back_list"), admin_portifolios_path, :class => "btn btn-default"
+  = link_to t("edit"), edit_admin_portifolio_path(@portifolio), :class => "btn btn-default" 
+  = link_to "Novo Potifólio", new_admin_portifolio_path, :class => "btn btn-primary"
+

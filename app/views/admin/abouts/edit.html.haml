@@ -1,0 +1,30 @@
+%section.content-header
+  %h1
+    Sobre
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "#"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Sobre
+
+
+/ Main content
+%section.content
+  .row
+    / left column
+    .col-md-12
+      / general form elements
+      .box.box-primary
+        .box-header
+          %h3.box-title Editar Sobre
+        / /.box-header
+        / form start
+        = render 'form'
+      
+
+      %p
+        = link_to t("back_list"), admin_abouts_path, :class => "btn btn-default"
+        = link_to t("show"), [:admin, @about], :class => "btn btn-default"
+

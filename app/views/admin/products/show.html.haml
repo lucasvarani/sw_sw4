@@ -1,0 +1,48 @@
+%section.content-header
+  %h1
+    Potifólios  
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Potifólios
+     
+
+/ Main content
+%section.content   
+  .row
+    / left column
+    .col-md-12
+      / general form elements
+      .box.box-primary
+        .box-header
+          %h3.box-title="#{@portifolio.title}"
+        
+        .box-body  
+          %p
+            %b= "#{t("activerecord.attributes.portifolio.description")}:"
+            %br
+            = raw @portifolio.description   
+        .box-body  
+          %p
+            %b= "#{t("activerecord.attributes.portifolio.published")}: "
+            = show_boolean(@portifolio.published)   
+        .box-body
+          %p
+            %b= "#{t("activerecord.attributes.portifolio.brand")}: "
+            = @portifolio.brand
+        .box-body
+          %p
+            %b= "#{t("activerecord.attributes.portifolio.style")}: "
+            = @portifolio.style
+        .box-body
+          %p
+            %b= "#{t("activerecord.attributes.portifolio.code")}: "
+            = @portifolio.code
+
+  = link_to t("back_list"), admin_portifolios_path, :class => "btn btn-default"
+  = link_to t("edit"), edit_admin_portifolio_path(@portifolio), :class => "btn btn-default" 
+  = link_to "Novo Potifólio", new_admin_portifolio_path, :class => "btn btn-primary"
+  /= link_to "Subcategoria de #{@category.title}", admin_category_subcategories_path(@portifolio), :class => "btn btn-success"

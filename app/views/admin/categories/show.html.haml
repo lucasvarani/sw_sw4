@@ -1,0 +1,44 @@
+%section.content-header
+  %h1
+    Categorias  
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "#"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Categorias
+     
+
+/ Main content
+%section.content   
+  .row
+    / left column
+    .col-md-12
+      / general form elements
+      .box.box-primary
+        .box-header
+          %h3.box-title="#{@category.title}"
+        
+        .box-body  
+          %p
+            %b= "#{t("activerecord.attributes.category.description")}:"
+            %br
+            = raw @category.description   
+        .box-body  
+          %p
+            %b= "#{t("activerecord.attributes.category.published")}: "
+            = show_boolean(@category.published)   
+        .box-body
+          %p
+            %b= "#{t("activerecord.attributes.category.highlighted")}: "
+            = show_boolean(@category.highlighted)
+        - if @category.image_category.file?
+          .box-body
+            %b= "#{t("activerecord.attributes.category.image_category")}:" 
+            %p=image_tag(@category.image_category.url)
+
+  = link_to t("back_list"), admin_categories_path, :class => "btn btn-default"
+  = link_to t("edit"), edit_admin_category_path(@category), :class => "btn btn-default" 
+  = link_to "Nova Categoria", new_admin_category_path, :class => "btn btn-primary"
+  = link_to "Subcategoria de #{@category.title}", admin_category_subcategories_path(@category), :class => "btn btn-success"

@@ -1,0 +1,38 @@
+%section.content-header
+  %h1
+    Potifólios  
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Potifólios
+/ Main content
+%section.content
+  .col-xs-12
+    %p
+      = link_to "Novo Potifólio", new_admin_portifolio_path, :class => "btn btn-primary" 
+    .box
+      .box-header
+        %h3.box-title 
+          Potifólios Cadastrados
+      .box-body.table-responsive.no-padding
+        %table.table.table-hover
+          %tr
+            %th=t("activerecord.attributes.portifolio.title")
+            %th=t("activerecord.attributes.portifolio.published")
+            %th=t("actions")
+          - for portifolio in @portifolios
+            %tr
+              %td= portifolio.title 
+              %td= show_boolean(portifolio.published)                
+              %td 
+                = link_to t("show"), [:admin, portifolio], :class => "btn btn-default"
+                = link_to t("edit"), edit_admin_portifolio_path(portifolio), :class => "btn btn-default"
+                = link_to t("destroy"), [:admin, portifolio], :confirm => t("msg_delete"), :method => :delete, :class => "btn btn-danger"
+                = link_to "Imagens do Potifólio", admin_portifolio_portifolio_images_path(portifolio), :class => "btn btn-success"
+
+
+    %p
+      = link_to "Novo Potifólio", new_admin_portifolio_path, :class => "btn btn-primary"

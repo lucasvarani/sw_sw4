@@ -1,0 +1,35 @@
+%section.content-header
+  %h1
+    Contatos  
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "#"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Contatos
+     
+
+/ Main content
+%section.content
+  .row
+    / left column
+    .col-md-12
+      / general form elements
+      .box.box-primary
+        .box-header
+          %h3.box-title= "#{t("activerecord.attributes.contact.id")}: #{@contact.id}"
+        .box-body  
+          %p= "#{t("activerecord.attributes.contact.name")}: #{@contact.name}"
+        .box-body  
+          %p= "#{t("activerecord.attributes.contact.phone")}: #{@contact.phone}"
+        .box-body  
+          %p= "#{t("activerecord.attributes.contact.business")}: #{@contact.business}"          
+        .box-body  
+          %p
+            = "#{t("activerecord.attributes.contact.message")}:"
+            %br
+            %b=@contact.message
+
+
+  = link_to t("back_list"), admin_contacts_path, :class => "btn btn-default"

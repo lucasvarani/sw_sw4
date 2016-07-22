@@ -1,0 +1,28 @@
+= form_for [:admin, @category, @item] do |f|
+  -if f.error_messages
+    .alert.alert-danger.alert-dismissable
+      %i.fa.fa-ban
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+      %b Alert!
+      Confira os campos marcados em vermelho.
+  .box-body
+    .form-group
+      = f.label :title
+      = f.text_field :title, :class => "form-control", :placeholder => t("activerecord.attributes.category.title")  
+    .form-group 
+      = f.label :description
+      = f.text_area :description, :class => "form-control tinymce", :placeholder => t("activerecord.attributes.category.description")  
+    .form-group 
+      = f.label :published
+      = f.check_box :published, :class => "form-control", :placeholder => t("activerecord.attributes.article.title")     
+    .form-group
+      = f.label :image_item
+      = f.file_field :image_item, :class => "form-control"  
+    - if @item.image_item.file?
+      .form-group
+        =image_tag(@item.image_item.url)
+  .box-footer
+    =f.submit nil, :class => "btn btn-primary" 
+    
+-content_for :footer do
+  = tinymce  

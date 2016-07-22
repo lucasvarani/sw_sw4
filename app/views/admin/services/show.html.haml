@@ -1,0 +1,18 @@
+- title "Admin/Service"
+
+%p
+  %strong Title:
+  = @service.title
+%p
+  %strong Active:
+  = @service.active
+%p
+  %strong Published:
+  = @service.published
+
+%p
+  = link_to "Edit", edit_admin_service_path(@service)
+  |
+  = link_to "Destroy", [:admin, @service], :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", admin_services_path

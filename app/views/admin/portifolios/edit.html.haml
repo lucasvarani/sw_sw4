@@ -1,0 +1,30 @@
+%section.content-header
+  %h1
+    Potifólios
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Potifólios
+
+
+/ Main content
+%section.content
+  .row
+    / left column
+    .col-md-12
+      / general form elements
+      .box.box-primary
+        .box-header
+          %h3.box-title Editar Potifólio
+        / /.box-header
+        / form start
+        = render 'form'
+      
+
+      %p
+        = link_to t("back_list"), admin_portifolios_path, :class => "btn btn-default"
+        = link_to t("show"), [:admin, @portifolio], :class => "btn btn-default"
+        

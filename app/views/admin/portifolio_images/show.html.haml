@@ -1,0 +1,39 @@
+%section.content-header
+  %h1
+    Imagens do Portifólio -
+    = "#{@portifolio.title}"
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li
+      %a{:href => "#{admin_portifolios_path()}"}
+        %i.fa.fa-dashboard
+        Portifólios  
+    %li.active Imagem do Portifólio
+     
+
+/ Main content
+%section.content
+  .row
+    / left column
+    .col-md-12
+      / general form elements
+      .box.box-primary
+        .box-header
+          %h3.box-title="#{@portifolio_image.title}" 
+        .box-body  
+          %p="#{t("activerecord.attributes.product_image.order")}: #{@portifolio_image.ordem}"          
+        .box-body  
+          %p="#{t("activerecord.attributes.product_image.published")}: #{show_boolean(@portifolio_image.published)}"      
+        - if @portifolio_image.image_portifolio.file?
+          .box-body
+            %p=image_tag(@portifolio_image.image_portifolio.url(:medium)) 
+
+
+  = link_to t("back_list"), admin_portifolio_portifolio_images_path(@portifolio), :class => "btn btn-default"
+  = link_to t("edit"), edit_admin_portifolio_portifolio_image_path(@portifolio, @portifolio_image), :class => "btn btn-default"
+  = link_to "Nova Imagem do Produto", new_admin_portifolio_portifolio_image_path(@portifolio), :class => "btn btn-primary"
+

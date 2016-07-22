@@ -1,0 +1,38 @@
+= form_for [:admin, @business] do |f|
+  -if f.error_messages
+    .alert.alert-danger.alert-dismissable
+      %i.fa.fa-ban
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+      %b Alert!
+      Confira os campos marcados em vermelho.
+  .box-body
+    .form-group
+      = f.label :description
+      = f.text_area :description, :class => "form-control tinymce", :placeholder => t("activerecord.attributes.business.description") 
+    .form-group 
+      = f.label :quote
+      = f.text_area :quote, :class => "form-control tinymce", :placeholder => t("activerecord.attributes.business.quote")     
+    .form-group
+      = f.label :quote_author      
+      = f.text_field :quote_author, :class => "form-control", :placeholder => t("activerecord.attributes.business.quote_author")  
+    .form-group 
+      = f.label :mission
+      = f.text_area :mission, :class => "form-control tinymce", :placeholder => t("activerecord.attributes.business.mission")   
+    .form-group 
+      = f.label :view
+      = f.text_area :view, :class => "form-control tinymce", :placeholder => t("activerecord.attributes.business.view")   
+    .form-group 
+      = f.label :values
+      = f.text_area :values, :class => "form-control tinymce", :placeholder => t("activerecord.attributes.business.values") 
+
+    .form-group
+      = f.label :image_business
+      = f.file_field :image_business, :class => "form-control"  
+    - if @business.image_business.file?
+      .form-group
+        =image_tag(@business.image_business.url)
+  .box-footer
+    =f.submit nil, :class => "btn btn-primary"  
+
+-content_for :footer do
+  = tinymce   

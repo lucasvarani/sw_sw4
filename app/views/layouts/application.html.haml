@@ -1,0 +1,40 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}  
+    %title
+      = content_for?(:title) ? t("site_name") + " - " + yield(:title) : t("site_name")
+    / Bootstrap
+    %link{:href => "http://fonts.googleapis.com/css?family=Roboto", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "https://fonts.googleapis.com/css?family=Titillium+Web", :rel => "stylesheet", :type => "text/css"}
+             
+    = csrf_meta_tag
+    = stylesheet_link_tag "bootstrap.min.css"
+    = stylesheet_link_tag "font-awesome.min.css"
+    = stylesheet_link_tag "application.css"
+    = stylesheet_link_tag "jquery.fancybox"
+    = stylesheet_link_tag "style.css"
+    = yield(:head)
+    / HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    /[if lt IE 9]
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>   
+  %body
+    / =render :file => "/layouts/_header.html.haml"    
+    =yield
+    =render :file => "/layouts/_footer.html.haml"
+    / JavaScripts
+    %script{:src => "https://code.jquery.com/jquery-1.12.3.min.js", :type => "text/javascript"}
+    = javascript_include_tag "application"
+    = javascript_include_tag "bootstrap.min.js"
+    = javascript_include_tag "jquery.scrolly.min.js"
+    = javascript_include_tag "jquery.poptrox.min.js"
+    = javascript_include_tag "jquery.fancybox.js"
+    = javascript_include_tag "jquery.cycle2.min.js"
+    = javascript_include_tag "skel.min.js"
+    = javascript_include_tag "util.js"
+    = javascript_include_tag "funcoes.js" 
+    =# javascript_include_tag "jcycle.js" 
+    = yield(:footer)

@@ -1,0 +1,60 @@
+%section.content-header
+  %h1
+    Dados da Empresa  
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "#"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Dados da Empresa
+     
+
+/ Main content
+%section.content
+  .row
+    / left column
+    .col-md-12
+      / general form elements
+      .box.box-primary
+        .box-header
+          %h3.box-title Dados da Empresa 
+  
+      - if @business.image_business.file?
+        .box-body
+          %b= "#{t("activerecord.attributes.business.image_business")}:" 
+          %p=image_tag(@business.image_business.url)       
+          
+        .box-body  
+          %p
+            %b= "#{t("activerecord.attributes.business.description")}:" 
+            %br
+            =raw(@business.description)  
+
+        .box-body  
+          %p
+            %b= "#{t("activerecord.attributes.business.quote")}:" 
+            %br
+            =raw(@business.quote)
+
+        .box-body  
+          %p
+            %b= "#{t("activerecord.attributes.business.mission")}:" 
+            %br
+            =raw(@business.mission)
+            
+        .box-body  
+          %p
+            %b= "#{t("activerecord.attributes.business.view")}:" 
+            %br
+            =raw(@business.view)
+            
+        .box-body  
+          %p
+            %b= "#{t("activerecord.attributes.business.values")}:" 
+            %br
+            =raw(@business.values)
+            
+
+
+  = link_to t("edit"), edit_admin_business_path(@business), :class => "btn btn-default"   

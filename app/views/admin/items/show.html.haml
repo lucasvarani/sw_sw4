@@ -1,0 +1,40 @@
+%section.content-header
+  %h1
+    Artigos  
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "#"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Artigos
+     
+
+/ Main content
+%section.content   
+  .row
+    / left column
+    .col-md-12
+      / general form elements
+      .box.box-primary
+        .box-header
+          %h3.box-title="#{@item.title}"
+        
+        .box-body  
+          %p
+            %b= "#{t("activerecord.attributes.item.description")}:"
+            %br
+            = raw @item.description   
+        .box-body  
+          %p
+            %b= "#{t("activerecord.attributes.item.published")}: "
+            = show_boolean(@item.published)   
+            
+        - if @item.image_item.file?
+          .box-body
+            %b= "#{t("activerecord.attributes.item.image_item")}:" 
+            %p=image_tag(@item.image_item.url)
+
+  = link_to t("back_list"), admin_category_items_path(@category), :class => "btn btn-default"
+  = link_to t("edit"), edit_admin_category_item_path(@category, @item), :class => "btn btn-default" 
+  = link_to "Novo Item", new_admin_category_item_path(@category), :class => "btn btn-primary"

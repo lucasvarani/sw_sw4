@@ -1,0 +1,33 @@
+%section.content-header
+  %h1
+    Itens
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "#"}
+        %i.fa.fa-dashboard
+        Home
+    %li
+      %a{:href => admin_categories_path()}
+        %i.fa.fa-dashboard
+        Categorias        
+    %li.active Itens
+
+
+/ Main content
+%section.content
+  .row
+    / left column
+    .col-md-12
+      / general form elements
+      .box.box-primary
+        .box-header
+          %h3.box-title Editar Item
+        / /.box-header
+        / form start
+        = render 'form'
+      
+
+      %p
+        = link_to t("back_list"), admin_category_items_path(@category), :class => "btn btn-default"
+        = link_to t("show"), admin_category_item_path(@category, @item), :class => "btn btn-default"
